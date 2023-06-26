@@ -1,0 +1,42 @@
+[core]
+	editor = \"C:\\Users\\jacea\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+	autocrlf = true
+[user]
+	name = Jace
+	email = jacealan1@gmail.com
+[alias]
+	s = status
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %Cgreen(%cr) %C(magenta)<%an>%Creset'
+	up = !git fetch origin master && git rebase origin/master
+	co = checkout
+	ca = !git add -A && git commit -m 
+	cad = !git add -A && git commit -m "."
+	c = commit
+	b = branch
+  list = stash list
+  save = stash save 
+	pop = stash pop
+	apply = stash apply
+	rc = rebase —continue
+	get = "!f(){ git fetch && git checkout $1 && git reset --hard origin/$1; };f"
+	new = "!f(){ git co -b ellie-$1 origin/master && git pull; };f"
+	st = status
+	hist = log --graph --all --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --date=short
+[init]
+	defaultBranch = main
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[safe]
+	directory = *
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[merge]
+  ff = no
+[commit]
+	template = .github/.gitmessage.txt
